@@ -37,7 +37,7 @@ link19[] = {10,2};
 link20[] = {11,2};
 link21[] = {12,2};
 globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,370.000000,930.000000,-125.000000,-650.000000,949,873,1};
-window[] = {2,-1,-1,-1,-1,826,66,1504,66,3,966};
+window[] = {2,-1,-1,-1,-1,980,220,1658,220,3,966};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -190,11 +190,13 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastinfiSTAR_cleanup) > 60)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_lastinfiSTAR_cleanup = diag_tickTime;" \n
+           "if(diag_fps < 20)then{" \n
            "_cleanupItems = (entities ""Land_MPS_EPOCH"");" \n
            "_cleanupItems append (entities ""WeaponHolderSimulated"");" \n
            "_cleanupItems append (allMissionObjects ""groundWeaponHolder"");" \n
            "_infiSTAR_cleanupItems = _cleanupItems;" \n
-           "_infiSTAR_cleanupItems append allDead;"/*%FSM</ACTION""">*/;
+           "_infiSTAR_cleanupItems append allDead;" \n
+           "};"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "Cleanup_Handler">*/
