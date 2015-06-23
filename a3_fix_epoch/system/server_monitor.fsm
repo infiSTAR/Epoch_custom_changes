@@ -196,6 +196,10 @@ class FSM
            "_cleanupItems append (allMissionObjects ""groundWeaponHolder"");" \n
            "_infiSTAR_cleanupItems = _cleanupItems;" \n
            "_infiSTAR_cleanupItems append allDead;" \n
+           "}else{" \n
+           "	_log = format[""SERVER-FPS: %1 | PLAYER ONLINE: %2 | No need to clean up"",diag_fps,((playersNumber west)+(playersNumber east)+(playersNumber civilian)+(playersNumber resistance))];" \n
+           "	diag_log _log;" \n
+           "	""ARMA_LOG"" callExtension format[""A3_CLEANUP:%1"",_log];" \n
            "};"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
