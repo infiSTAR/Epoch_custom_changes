@@ -15,6 +15,8 @@ if(_clientVersion !=Epoch_ServerVersion)exitWith{format["Epoch: Version mismatch
 };
 if(_configVersion !=getText(configFile >> "CfgPatches" >> "A3_server_settings" >> "epochVersion"))exitWith{format["Epoch: Config file needs updated! Current: %1 Needed: %2",_configVersion,getText(configFile >> "CfgPatches" >> "A3_server_settings" >> "epochVersion")]call _abortAndError;
 };
+if(_configVersion !=getText(configFile >> "CfgEpochClient" >> "epochVersion"))exitWith{format["Epoch: Mission Config file needs updated! Current: %1 Needed: %2",_configVersion,getText(configFile >> "CfgEpochClient" >> "epochVersion")]call _abortAndError;
+};
 if(("epochserver" callExtension "")!=_hiveVersion)exitWith{format["Epoch: Server DLL mismatch! Current: %1 Needed: %2","epochserver" callExtension "",_hiveVersion]call _abortAndError;
 };
 _serverConfig=call compile("epochserver" callExtension "000");
