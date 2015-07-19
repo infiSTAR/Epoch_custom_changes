@@ -25,9 +25,8 @@ fnc_infiCleanup = {
 if(isNil "Epoch_SStart")then
 {
 	Epoch_SStart=true;
-	[] spawn {
-		call compile preprocessFileLineNumbers "\x\addons\a3_epoch_code\init\both_init.sqf";
-		call compile preprocessFileLineNumbers "\a3_fix_epoch\init\server_init.sqf";
-	};
+	call compile preprocessFileLineNumbers "\x\addons\a3_epoch_code\init\both_init.sqf";
+	call compile preprocessFileLineNumbers "\a3_fix_epoch\init\server_init.sqf";
+	EPOCH_server_triggerEvent = compileFinal '';
 };
 true
