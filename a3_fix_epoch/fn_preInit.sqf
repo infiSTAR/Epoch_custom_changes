@@ -18,7 +18,7 @@ fnc_infiCleanup = {
 			};
 		};
 	} forEach _this;
-	_log = format["SERVER-FPS: %1 | PLAYER ONLINE: %2 | %3 objects cleaned up",diag_fps,((playersNumber west)+(playersNumber east)+(playersNumber civilian)+(playersNumber resistance)),_cleaned];
+	_log = format["SERVER-FPS: %1 | PLAYER ONLINE: %2 | THREADS: %3 | %4 objects cleaned up",diag_fps,((playersNumber west)+(playersNumber east)+(playersNumber civilian)+(playersNumber resistance)),count diag_activeSQFScripts,_cleaned];
 	diag_log _log;
 	"ARMA_LOG" callExtension format["A3_CLEANUP:%1",_log];
 };
