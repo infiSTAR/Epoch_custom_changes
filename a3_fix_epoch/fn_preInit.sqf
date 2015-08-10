@@ -8,7 +8,7 @@ fnc_infiCleanup = {
 		if(!isNull _x)then{
 			private ["_var","_clean"];
 			_clean = _x getVariable "DO_NOT_CLEAN";
-			if(!isNil'_clean')then
+			if(isNil'_clean')then
 			{
 				_var = _x getVariable["CLEANUP_TIME",-1];
 				if(_var isEqualTo -1)then{
