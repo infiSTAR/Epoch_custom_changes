@@ -6,14 +6,18 @@ fnc_infiCleanup = {
 	_cleaned = 0;
 	{
 		if(!isNull _x)then{
-			private "_var";
-			_var = _x getVariable["CLEANUP_TIME",-1];
-			if(_var isEqualTo -1)then{
-				_x setVariable["CLEANUP_TIME",(time+300)];
-			}else{
-				if(time > _var)then{
-					deleteVehicle _x;
-					_cleaned = _cleaned + 1;
+			private ["_var","_clean"];
+			_clean = _x getVariable "DO_NOT_CLEAN";
+			if(!isNil'_clean')then
+			{
+				_var = _x getVariable["CLEANUP_TIME",-1];
+				if(_var isEqualTo -1)then{
+					_x setVariable["CLEANUP_TIME",(time+300)];
+				}else{
+					if(time > _var)then{
+						deleteVehicle _x;
+						_cleaned = _cleaned + 1;
+					};
 				};
 			};
 		};
