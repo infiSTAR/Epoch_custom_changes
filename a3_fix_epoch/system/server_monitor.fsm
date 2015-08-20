@@ -6,8 +6,8 @@ item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
 item3[] = {"De_simulate_Vehicle",4,218,750.000000,-225.000000,850.000000,-175.000000,2.000000,"De-simulate" \n "Vehicle Check"};
 item4[] = {"Simulate_Vehicle",4,218,750.000000,-300.000000,850.000000,-250.000000,1.000000,"Simulate" \n "Vehicle Check"};
-item5[] = {"CMD_queue",4,4314,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
-item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
+item5[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
+item6[] = {"Save_Players",4,4314,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
 item8[] = {"Events",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
 item9[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
@@ -33,8 +33,8 @@ link16[] = {8,2};
 link17[] = {9,2};
 link18[] = {10,2};
 link19[] = {11,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,2,6316128,1,391.035309,949.332886,-27.756525,-889.515869,620,873,1};
-window[] = {2,-1,-1,-1,-1,782,22,1460,22,3,637};
+globals[] = {25.000000,1,0,0,0,640,480,1,2,6316128,1,342.446167,997.921936,48.756340,-964.636719,619,957,1};
+window[] = {2,-1,-1,-1,-1,1022,2162,3600,262,3,636};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -126,7 +126,7 @@ class FSM
        "			_lastCheck = diag_tickTime;" \n
        "		};" \n
        "		if (diag_tickTime - _lastCheck > 800) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air""], 45];" \n
+       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
        "			if ({ isPlayer _x }count _list == 0) then {" \n
        "				_this setVariable [""LAST_CHECK"",nil];" \n
        "				deleteVehicle _this;" \n
@@ -144,7 +144,7 @@ class FSM
        "			_lastCheck = diag_tickTime;" \n
        "		};" \n
        "		if (diag_tickTime - _lastCheck > 800) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air""], 45];" \n
+       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
        "			if ({ isPlayer _x }count _list == 0) then {" \n
        "				{" \n
        "					deleteVehicle _x;" \n
@@ -292,7 +292,7 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _delayTimeSavePlayers) > 1)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_delayTimeSavePlayers = diag_tickTime;" \n
            "if!(_players isEqualTo _prevPlayers)then{_prevPlayers = _players;if (_savePlayerList) then {[""PLAYERS"", (call EPOCH_fn_InstanceID), _players] call EPOCH_server_hiveSET;};};" \n
-           "{if (units _x isEqualTo []) then {deleteGroup _x}}forEach allGroups;"/*%FSM</ACTION""">*/;
+           "{if (units _x isEqualTo []) then {deleteGroup _x}}forEach allGroups"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "De_simulate_Vehicle">*/
